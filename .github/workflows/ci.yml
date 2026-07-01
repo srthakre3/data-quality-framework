@@ -1,0 +1,49 @@
+name: CI — Lint & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas sqlalchemy jinja2 pytest pyyaml --quiet
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile runner.py
+          python -m py_compile checks/null_check.py
+          python -m py_compile checks/duplicate_check.py
+          python -m py_compile checks/schema_check.py
+          python -m py_compile checks/referential_check.py
+          python -m py_compile checks/statistical_check.py
+          python -m py_compile reports/report_generator.py
+          echo "✅ Python syntax OK"
+
+      - name: Validate YAML
+        run: |
+          python -c "
+          import yaml, glob, sys
+          for f in glob.glob('**/*.yml', recursive=True):
+              try:
+                  yaml.safe_load(open(f))
+                  print(f'OK: {f}')
+              except Exception as e:
+                  print(f'FAIL: {f} — {e}')
+                  sys.exit(1)
+          "
+
+      - name: Run unit tests
+        run: pytest tests/ -v --tb=short

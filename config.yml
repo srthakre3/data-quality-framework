@@ -1,0 +1,62 @@
+tables:
+  - schema: raw
+    table: yellow_trips
+    primary_key: trip_id
+    checks:
+      null_threshold_pct: 5.0
+      outlier_sigma: 3.0
+    columns:
+      - name: trip_id
+        type: VARCHAR
+        nullable: false
+      - name: pickup_datetime
+        type: TIMESTAMP
+        nullable: false
+      - name: dropoff_datetime
+        type: TIMESTAMP
+        nullable: false
+      - name: passenger_count
+        type: INTEGER
+        nullable: true
+      - name: trip_distance
+        type: FLOAT
+        nullable: false
+      - name: fare_amount
+        type: FLOAT
+        nullable: false
+      - name: tip_amount
+        type: FLOAT
+        nullable: true
+      - name: total_amount
+        type: FLOAT
+        nullable: false
+    referential_checks:
+      []  # no FK checks on raw layer
+
+  - schema: marts
+    table: fct_trips
+    primary_key: trip_sk
+    checks:
+      null_threshold_pct: 1.0
+      outlier_sigma: 3.0
+    columns:
+      - name: trip_sk
+        type: VARCHAR
+        nullable: false
+      - name: trip_id
+        type: VARCHAR
+        nullable: false
+      - name: pickup_date
+        type: DATE
+        nullable: false
+      - name: fare_amount
+        type: FLOAT
+        nullable: false
+      - name: trip_duration_minutes
+        type: FLOAT
+        nullable: false
+    referential_checks:
+      - column: pickup_date
+        ref_schema: marts
+        ref_table: dim_date
+        ref_column: date_id
