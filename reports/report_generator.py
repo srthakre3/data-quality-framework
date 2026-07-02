@@ -5,7 +5,7 @@ Produces an HTML summary report + JSON output for all DQ check results.
 
 import json
 import os
-from datetime import datetime
+import datetime as dt
 from jinja2 import Template
 
 
@@ -80,8 +80,8 @@ def generate_report(all_results: list, output_dir: str = "reports/output") -> di
     Returns dict with paths to generated HTML and JSON files.
     """
     os.makedirs(output_dir, exist_ok=True)
-    run_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
-    date_slug = datetime.utcnow().strftime("%Y-%m-%d")
+    run_date = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    date_slug = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
 
     passed = sum(1 for r in all_results if r.get("passed"))
     failed = len(all_results) - passed
