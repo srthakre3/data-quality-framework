@@ -43,4 +43,14 @@ class SchemaCheck:
                 )
                 results["passed"] = False
 
+            # Data type (loose string match — DB returns e.g. "VARCHAR(256)", config has "VARCHAR")
+            if "type" in expected:
+                expected_type = expected["type"].upper()
+                actual_type = str(actual["type"]).upper()
+                if expected_type not in actual_type:
+                    results["issues"].append(
+                        f"Column '{col_name}' type mismatch: expected {expected_type}, got {actual_type}"
+                    )
+                    results["passed"] = False
+
         return results
