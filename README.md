@@ -134,7 +134,7 @@ The HTML report renders a summary dashboard with pass/fail badges per check and 
 | Schema | Missing columns, wrong types, nullability mismatches | Exact match |
 | Null | Columns with too many missing values | Configurable % per table |
 | Duplicate | Duplicate primary keys or identical rows | 0 duplicates |
-| Referential | Orphan rows — FK values with no match in referenced table | 0 orphans |
+| Referential | Orphan rows (FK values with no match in referenced table) | 0 orphans |
 | Statistical | Numeric outliers beyond N standard deviations from mean | 3σ default |
 
 ---
@@ -152,7 +152,7 @@ tests/test_checks.py::test_report_generates_files              PASSED
 6 passed in 0.40s
 ```
 
-Tests use SQLite in-memory fixtures — no database setup required.
+Tests use SQLite in-memory fixtures. No database setup required.
 
 ---
 
@@ -167,5 +167,5 @@ GitHub Actions runs on every push to `main`:
 
 ## Author
 
-**Sanket Thakre** — Analytics Engineer / BIE @ Amazon  
+**Sanket Thakre**, Analytics Engineer / BIE @ Amazon  
 [sanketthakre.me](https://sanketthakre.me) · [github.com/srthakre3](https://github.com/srthakre3)
