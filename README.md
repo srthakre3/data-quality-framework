@@ -71,6 +71,9 @@ pip install -r requirements.txt
 # Run unit tests (no database needed — uses SQLite in-memory)
 python -m pytest tests/ -v
 
+# Run the demo (no database needed — uses SQLite in-memory)
+python demo.py
+
 # Run against a real database
 python runner.py --connection postgresql://user:pass@host:5432/db --table raw.yellow_trips
 ```
