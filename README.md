@@ -5,28 +5,12 @@ A production-style Python framework for automated data quality monitoring on Pos
 Built to demonstrate the kind of data observability tooling used in real analytics engineering workflows.
 
 ---
+
 ## Architecture
 
 ![Architecture Diagram](docs/architecture.svg)
 
 The framework extracts raw tables from PostgreSQL, runs automated checks across three categories (schema validation, null/duplicate detection, statistical outlier alerting), outputs HTML and JSON reports, and enforces quality gates via pytest and GitHub Actions CI. All 6/6 tests pass.
-
-## What It Does
-
-```
-PostgreSQL / Redshift Table
-         │
-         ▼
-  DQ Check Runner
-  ├── Schema Check       → column names, data types, nullability
-  ├── Null Check         → null % per column vs configurable threshold
-  ├── Duplicate Check    → PK duplicates + full-row duplicates
-  ├── Referential Check  → FK integrity across tables (LEFT JOIN orphan scan)
-  └── Statistical Check  → 3σ outlier detection on numeric columns
-         │
-         ▼
-  Report Generator       → HTML dashboard + JSON output
-```
 
 ---
 
@@ -57,6 +41,8 @@ data-quality-framework/
 │   └── report_generator.py     # Renders HTML + JSON report from check results
 ├── tests/
 │   └── test_checks.py          # 6 pytest unit tests with SQLite in-memory DB
+├── docs/
+│   └── architecture.svg        # Architecture diagram
 ├── runner.py                   # CLI entry point — runs all checks for configured tables
 ├── config.yml                  # Table definitions, thresholds, FK mappings
 ├── .github/workflows/
@@ -75,9 +61,6 @@ pip install -r requirements.txt
 
 # Run unit tests (no database needed — uses SQLite in-memory)
 python -m pytest tests/ -v
-
-# Run the demo (no database needed — uses SQLite in-memory)
-python demo.py
 
 # Run against a real database
 python runner.py --connection postgresql://user:pass@host:5432/db --table raw.yellow_trips
@@ -128,8 +111,6 @@ Checking raw.yellow_trips
 ❌ 1 check(s) failed.
 ```
 
-The HTML report renders a summary dashboard with pass/fail badges per check and a breakdown of all issues found.
-
 ---
 
 ## Checks Reference
@@ -172,5 +153,5 @@ GitHub Actions runs on every push to `main`:
 
 ## Author
 
-**Sanket Thakre**, Analytics Engineer / BIE @ Amazon  
-[sanketthakre.me](https://sanketthakre.me) · [github.com/srthakre3](https://github.com/srthakre3)
+**Sanket Thakre**, Business Intelligence Engineer @ Amazon
+[srthakre3.github.io](https://srthakre3.github.io) · [github.com/srthakre3](https://github.com/srthakre3)
