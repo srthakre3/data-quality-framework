@@ -5,6 +5,11 @@ A production-style Python framework for automated data quality monitoring on Pos
 Built to demonstrate the kind of data observability tooling used in real analytics engineering workflows.
 
 ---
+## Architecture
+
+![Architecture Diagram](docs/architecture.svg)
+
+The framework extracts raw tables from PostgreSQL, runs automated checks across three categories (schema validation, null/duplicate detection, statistical outlier alerting), outputs HTML and JSON reports, and enforces quality gates via pytest and GitHub Actions CI. All 6/6 tests pass.
 
 ## What It Does
 

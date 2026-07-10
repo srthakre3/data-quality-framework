@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif" role="img">
+  <title>Automated Data Quality &amp; Monitoring Framework Architecture</title>
+  <desc>Source tables feed into Python extractor, which runs three validation checks, then outputs HTML/JSON reports and alerts. Tested with pytest and GitHub Actions CI.</desc>
+  <rect width="900" height="320" fill="#F8FAFC" rx="12"/>
+  <text x="450" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">Data Quality &amp; Monitoring Framework</text>
+  <text x="450" y="48" text-anchor="middle" font-size="10" fill="#64748B">Python · Great Expectations · Pandas · SQL · pytest · GitHub Actions</text>
+  <text x="22" y="76" font-size="9" font-weight="700" fill="#94A3B8" letter-spacing="1.2">VALIDATION PIPELINE</text>
+  <rect x="20" y="84" width="120" height="70" rx="8" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="80" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#1D4ED8">Source</text>
+  <text x="80" y="122" text-anchor="middle" font-size="9" fill="#2563EB">PostgreSQL</text>
+  <text x="80" y="136" text-anchor="middle" font-size="9" fill="#2563EB">Redshift</text>
+  <text x="80" y="148" text-anchor="middle" font-size="9" fill="#2563EB">Analytics Tables</text>
+  <line x1="140" y1="119" x2="162" y2="119" stroke="#CBD5E1" stroke-width="1.5"/>
+  <polygon points="162,115 170,119 162,123" fill="#CBD5E1"/>
+  <rect x="170" y="84" width="120" height="70" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="230" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#15803D">Extract</text>
+  <text x="230" y="122" text-anchor="middle" font-size="9" fill="#16A34A">Python + Pandas</text>
+  <text x="230" y="136" text-anchor="middle" font-size="9" fill="#16A34A">SQL Queries</text>
+  <text x="230" y="148" text-anchor="middle" font-size="9" fill="#16A34A">Table metadata</text>
+  <line x1="290" y1="119" x2="312" y2="119" stroke="#CBD5E1" stroke-width="1.5"/>
+  <polygon points="312,115 320,119 312,123" fill="#CBD5E1"/>
+  <rect x="320" y="74" width="350" height="90" rx="10" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="495" y="90" text-anchor="middle" font-size="9" font-weight="700" fill="#D97706" letter-spacing="0.8">VALIDATION CHECKS</text>
+  <rect x="330" y="96" width="100" height="58" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="380" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#C2410C">Schema</text>
+  <text x="380" y="130" text-anchor="middle" font-size="8" fill="#EA580C">Column names</text>
+  <text x="380" y="141" text-anchor="middle" font-size="8" fill="#EA580C">Data types</text>
+  <text x="380" y="152" text-anchor="middle" font-size="8" fill="#EA580C">Row count range</text>
+  <rect x="445" y="96" width="100" height="58" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="495" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#C2410C">Null / Dupe</text>
+  <text x="495" y="130" text-anchor="middle" font-size="8" fill="#EA580C">Not-null checks</text>
+  <text x="495" y="141" text-anchor="middle" font-size="8" fill="#EA580C">Uniqueness</text>
+  <text x="495" y="152" text-anchor="middle" font-size="8" fill="#EA580C">Referential integrity</text>
+  <rect x="560" y="96" width="100" height="58" rx="6" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/>
+  <text x="610" y="116" text-anchor="middle" font-size="10" font-weight="600" fill="#C2410C">Outliers</text>
+  <text x="610" y="130" text-anchor="middle" font-size="8" fill="#EA580C">Z-score detection</text>
+  <text x="610" y="141" text-anchor="middle" font-size="8" fill="#EA580C">IQR bounds</text>
+  <text x="610" y="152" text-anchor="middle" font-size="8" fill="#EA580C">Statistical alerts</text>
+  <line x1="670" y1="119" x2="692" y2="119" stroke="#CBD5E1" stroke-width="1.5"/>
+  <polygon points="692,115 700,119 692,123" fill="#CBD5E1"/>
+  <rect x="700" y="74" width="180" height="90" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="790" y="93" text-anchor="middle" font-size="10" font-weight="700" fill="#7C3AED">OUTPUT</text>
+  <rect x="710" y="100" width="75" height="54" rx="6" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="1"/>
+  <text x="748" y="119" text-anchor="middle" font-size="9" font-weight="600" fill="#6D28D9">Reports</text>
+  <text x="748" y="132" text-anchor="middle" font-size="8" fill="#7C3AED">HTML report</text>
+  <text x="748" y="143" text-anchor="middle" font-size="8" fill="#7C3AED">JSON summary</text>
+  <text x="748" y="154" text-anchor="middle" font-size="8" fill="#7C3AED">Pass/Fail status</text>
+  <rect x="795" y="100" width="75" height="54" rx="6" fill="#FCE7F3" stroke="#DB2777" stroke-width="1"/>
+  <text x="833" y="119" text-anchor="middle" font-size="9" font-weight="600" fill="#9D174D">Alerts</text>
+  <text x="833" y="132" text-anchor="middle" font-size="8" fill="#DB2777">Console log</text>
+  <text x="833" y="143" text-anchor="middle" font-size="8" fill="#DB2777">Email notify</text>
+  <text x="833" y="154" text-anchor="middle" font-size="8" fill="#DB2777">Threshold flags</text>
+  <text x="22" y="186" font-size="9" font-weight="700" fill="#94A3B8" letter-spacing="1.2">TESTING &amp; CI</text>
+  <rect x="20" y="194" width="860" height="50" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="44" y="215" font-size="11" font-weight="700" fill="#15803D">pytest + GitHub Actions CI</text>
+  <text x="44" y="230" font-size="9" fill="#16A34A">6 of 6 tests passing: schema validation, null detection, duplicate check, outlier alerting, report generation, end-to-end pipeline run</text>
+  <text x="22" y="268" font-size="9" font-weight="700" fill="#94A3B8" letter-spacing="1.2">LEGEND</text>
+  <rect x="22" y="276" width="12" height="10" rx="2" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1"/><text x="38" y="285" font-size="9" fill="#475569">Source</text>
+  <rect x="100" y="276" width="12" height="10" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="1"/><text x="116" y="285" font-size="9" fill="#475569">Extraction</text>
+  <rect x="198" y="276" width="12" height="10" rx="2" fill="#FFF7ED" stroke="#EA580C" stroke-width="1"/><text x="214" y="285" font-size="9" fill="#475569">Validation Checks</text>
+  <rect x="338" y="276" width="12" height="10" rx="2" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="1"/><text x="354" y="285" font-size="9" fill="#475569">Reports</text>
+  <rect x="415" y="276" width="12" height="10" rx="2" fill="#FCE7F3" stroke="#DB2777" stroke-width="1"/><text x="431" y="285" font-size="9" fill="#475569">Alerts</text>
+  <rect x="490" y="276" width="12" height="10" rx="2" fill="#DCFCE7" stroke="#16A34A" stroke-width="1"/><text x="506" y="285" font-size="9" fill="#475569">Testing / CI</text>
+</svg>
